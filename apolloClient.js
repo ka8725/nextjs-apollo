@@ -8,6 +8,7 @@ export default function createApolloClient(initialState, ctx) {
 	// use it to extract auth headers (ctx.req) or similar.
 	return new ApolloClient({
 		ssrMode: Boolean(ctx),
+		connectToDevTools: true,
 		link: new HttpLink({
 			uri: 'https://rickandmortyapi.com/graphql', // Server URL (must be absolute)
 			credentials: 'same-origin', // Additional fetch() options like `credentials` or `headers`

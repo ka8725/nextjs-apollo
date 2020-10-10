@@ -4,14 +4,19 @@ import { useQuery } from '@apollo/react-hooks';
 import { ALL_CHARACTERS } from '../gql/allCharacters';
 
 const IndexPage = () => {
-	const { loading, error, data } = useQuery(ALL_CHARACTERS);
+	const { loading, error, data } = useQuery(
+		ALL_CHARACTERS,
+		{
+			onCompleted: () => console.log('all characters are loaded')
+		}
+	);
 	if (error) return <h1>Error</h1>;
 	if (loading) return <h1>Loading...</h1>;
 
 	return (
 		<>
 			<h1>
-				<h3>Setting up Apollo GraphQL in Next.js with Server Side Rendering</h3>
+				<div>Setting up Apollo GraphQL in Next.js with Server Side Rendering</div>
 			</h1>
 			<div>
 				{data.characters.results.map((data) => (
